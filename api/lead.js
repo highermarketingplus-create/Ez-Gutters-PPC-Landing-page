@@ -14,14 +14,19 @@ export default async function handler(req, res) {
       data = {};
     }
   } else {
-    const body = typeof req.body === "string" ? req.body : "";
+    let body = "";
+    if (typeof req.body === "string") {
+      body = req.body;
+    } else if (Buffer.isBuffer(req.body)) {
+      body = req.body.toString("utf8");
+    }
     const params = new URLSearchParams(body);
     data = Object.fromEntries(params.entries());
   }
 
   const honeypot = (data.company || "").toString().trim();
   if (honeypot) {
-    return res.status(200).redirect(302, "/?submitted=1#lead-form");
+    return res.status(200).redirect(302, "/thanks.html");
   }
 
   const payload = {
@@ -73,5 +78,5 @@ export default async function handler(req, res) {
     return res.status(502).send("Failed to send email.");
   }
 
-  return res.status(302).redirect("/?submitted=1#lead-form");
+  return res.status(302).redirect("/thanks.html");
 }
