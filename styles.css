@@ -308,6 +308,29 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+.form-status {
+  display: none;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.6rem;
+  background: #ecf7f0;
+  border: 1px solid #b9dfc7;
+  color: #1f5e35;
+  font-weight: 700;
+}
+
+.form-status.visible {
+  display: block;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .warranty-pill {
   margin: 0 0 1rem;
   background: var(--green-50);

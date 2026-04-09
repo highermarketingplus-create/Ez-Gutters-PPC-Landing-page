@@ -82,9 +82,9 @@
             <li>Locally owned and operated</li>
           </ul>
 
-          <a class="call-cta" href="tel:+14175550000">
+          <a class="call-cta" href="tel:+14172250149">
             <span class="phone-icon" aria-hidden="true">&#9742;</span>
-            <span>Call Us Directly</span>
+            <span>Call (417) 225-0149</span>
           </a>
         </div>
 
@@ -93,7 +93,9 @@
           <h2>Get Your Free Estimate</h2>
           <p class="lead-note">No pressure. No obligation. Response within 1 business day.</p>
 
-          <form class="estimate-form" action="mailto:info@ezgutters.com" method="post" enctype="text/plain">
+          <div class="form-status" role="status" aria-live="polite"></div>
+          <form class="estimate-form" action="/api/lead" method="post">
+            <input type="text" name="company" class="honeypot" autocomplete="off" tabindex="-1" />
             <label for="full-name">Full Name</label>
             <input id="full-name" name="full_name" type="text" placeholder="Jane Smith" required />
 
@@ -264,5 +266,15 @@
   <div class="mobile-cta">
     <a href="#lead-form">Tap Here -></a>
   </div>
+
+  <script>
+    const statusEl = document.querySelector(".form-status");
+    const params = new URLSearchParams(window.location.search);
+    if (statusEl && params.get("submitted") === "1") {
+      statusEl.textContent = "Thanks! Your request was sent. We will reach out shortly.";
+      statusEl.classList.add("visible");
+      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+    }
+  </script>
 </body>
 </html>
