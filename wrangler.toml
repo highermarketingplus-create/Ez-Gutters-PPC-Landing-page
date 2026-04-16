@@ -1,0 +1,8 @@
+name = "ez-gutters"
+main = "src/worker.js"
+compatibility_date = "2026-04-16"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+run_worker_first = ["/api/*"]

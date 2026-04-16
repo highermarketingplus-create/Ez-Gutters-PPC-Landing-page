@@ -1,0 +1,11 @@
+.git
+.gitignore
+.dev.vars
+.assetsignore
+wrangler.toml
+src/
+functions/
+api/
+*.docx
+README.md
+.github/
