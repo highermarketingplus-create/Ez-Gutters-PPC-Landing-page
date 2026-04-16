@@ -1,4 +1,5 @@
-name = "ez-gutters"
+name = "ez-gutters-ppc-landing-page"
+account_id = "8468d82d6a8b2be422e624e40e8ac527"
 main = "src/worker.js"
 compatibility_date = "2026-04-16"
 
